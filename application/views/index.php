@@ -26,7 +26,7 @@
 
 <script type="text/javascript">
     loadVideoList();
-    setInterval(loadVideoList, 5000);
+    setInterval(loadVideoList, 2000);
 
     function onClickImportVideo() {
         const url = $("#txt-url").val();
@@ -61,11 +61,13 @@
 
                     html += `
                         <div class="row">
-                            <div class="col-xs-10">
+                            <div class="col-xs-9">
                                 ${video.url}
                             </div>
-                            <div class="col-xs-2">
-                                ${video.status === 'done' ? viewButton : video.status}
+                            <div class="col-xs-3">
+                                ${ video.status === 'done' ? viewButton :
+                                    video.status === 'processing' ? video.status + ' ' + video.progress + '%' :
+                                        video.status}
                             </div>
                         </div>
                     `;
